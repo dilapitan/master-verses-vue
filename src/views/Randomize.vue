@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h1>This is randomize page</h1>
-  </div>
+  <v-container fluid>
+    <div :class="`text-xs-caption text-sm-h4`">
+      Randomize! And recite!
+    </div>
+  </v-container>
 </template>
 
 <script>

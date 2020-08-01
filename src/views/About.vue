@@ -1,5 +1,7 @@
 <template>
-  <div>
-    <h1>This is an about page</h1>
-  </div>
+  <v-container fluid>
+    <div :class="`text-xs-caption text-sm-h4`">
+      About page
+    </div>
+  </v-container>
 </template>
