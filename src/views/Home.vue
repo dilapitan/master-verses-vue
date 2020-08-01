@@ -7,7 +7,7 @@
     <br />
 
     <v-row>
-      <v-col cols="8" xs="8" sm="4">
+      <v-col cols="9" xs="9" sm="3">
         <v-select
           v-model="category"
           label="Select Category"
