@@ -10,5 +10,6 @@
 <script>
 export default {
   name: 'Home',
+  props: ['verses'],
 }
 </script>

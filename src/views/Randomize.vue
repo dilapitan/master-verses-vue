@@ -7,5 +7,6 @@
 <script>
 export default {
   name: 'Randomize',
+  props: ['verses'],
 }
 </script>

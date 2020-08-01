@@ -55,7 +55,7 @@
 
     <v-main>
       <v-container fluid>
-        <router-view></router-view>
+        <router-view :verses="verses"></router-view>
       </v-container>
     </v-main>
   </v-app>
@@ -72,7 +72,6 @@ export default {
 
   created() {
     this.setVerses()
-    console.log(this.verses)
   },
 
   methods: {
