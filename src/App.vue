@@ -62,10 +62,29 @@
 </template>
 
 <script>
+import { getVerses } from '@/services/FirestoreService'
+
 export default {
   data: () => ({
     drawer: null,
-    theme: 'light',
+    verses: [],
   }),
+
+  created() {
+    this.setVerses()
+    console.log(this.verses)
+  },
+
+  methods: {
+    setVerses: function() {
+      getVerses()
+        .then((querySnapshot) => {
+          querySnapshot.docs.forEach((doc) => {
+            this.verses.push(doc.data())
+          })
+        })
+        .catch((error) => console.log(error))
+    },
+  },
 }
 </script>

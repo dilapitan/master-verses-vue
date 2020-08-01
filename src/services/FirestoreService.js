@@ -1,6 +1,4 @@
-import firebase from '../config/firebase-config'
-
-const db = firebase.firestore()
+import { db } from '../config/firebase-config'
 
 export const getVerses = () => {
   return db
