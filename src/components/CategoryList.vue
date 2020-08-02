@@ -7,7 +7,6 @@
     <br />
 
     <template v-for="(sv, key) in sortedVerses">
-      {{ key + 1 }}
       <SubCategoryList :key="key" :verses="sv" />
     </template>
   </div>

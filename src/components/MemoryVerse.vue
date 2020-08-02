@@ -1,5 +1,9 @@
 <template>
-  <div>Verse under {{ subCategory }}</div>
+  <div>
+    <v-btn class="font-weight-bold" color="primary" text>{{
+      verse.verse
+    }}</v-btn>
+  </div>
 </template>
 
 <script>
