@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="`text-caption text-sm-subtitle-1`">
+    <div :class="`text-caption text-sm-subtitle-1`" class="grey--text ">
       {{ trimmedSubCategory(verses.subCategory) }}
     </div>
 
