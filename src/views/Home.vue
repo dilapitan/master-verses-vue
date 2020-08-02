@@ -15,15 +15,31 @@
         ></v-select>
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col>
+        <template v-for="cv in categorizedVerses">
+          <CategoryList :key="cv.category" :cv="cv" />
+        </template>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import CategoryList from '@/components/CategoryList'
+
 export default {
   name: 'Home',
+
+  components: {
+    CategoryList,
+  },
+
   props: ['verses'],
+
   data: () => ({
-    category: '',
+    category: 'All',
     categories: [
       'All',
       'A. Christ – the Source',
@@ -35,5 +51,16 @@ export default {
       'G. Circles of Influence',
     ],
   }),
+
+  computed: {
+    categorizedVerses: function() {
+      if (this.category === 'All') return this.verses
+      const sorted = this.verses.filter((categorizedVerses) => {
+        return categorizedVerses.category === this.category
+      })
+
+      return sorted
+    },
+  },
 }
 </script>
