@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div :class="`text-overline text-sm-button`">
+      {{ category }}
+    </div>
+
+    <br />
+
     <template v-for="(sv, key) in sortedVerses">
       <SubCategoryList :key="key" :verses="sv" />
     </template>
@@ -16,7 +22,7 @@ export default {
     SubCategoryList,
   },
 
-  props: ['cv'],
+  props: ['cv', 'category'],
 
   data: () => ({
     verses: null,

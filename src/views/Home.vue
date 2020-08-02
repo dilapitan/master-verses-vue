@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <div :class="`text-xs-caption text-sm-h4`">
+    <div :class="`text-h6 text-sm-h4`">
       List of Memory Verses
     </div>
 
@@ -19,7 +19,7 @@
     <v-row>
       <v-col>
         <template v-for="cv in categorizedVerses">
-          <CategoryList :key="cv.category" :cv="cv" />
+          <CategoryList :key="cv.category" :category="cv.category" :cv="cv" />
         </template>
       </v-col>
     </v-row>
