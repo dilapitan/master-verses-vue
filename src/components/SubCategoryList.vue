@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <div :class="`text-caption text-sm-subtitle-1`" class="grey--text ">
       {{ trimmedSubCategory(verses.subCategory) }}
     </div>
@@ -7,7 +7,11 @@
     <v-row>
       <template v-for="(v, key) in verses.subCategoryVerses">
         <v-col :key="key" cols="8" xs="8" sm="6" md="4" lg="3">
-          <MemoryVerse :subCategory="verses.subCategory" :verse="v" />
+          <MemoryVerse
+            :category="category"
+            :subCategory="verses.subCategory"
+            :verse="v"
+          />
         </v-col>
       </template>
     </v-row>
@@ -15,7 +19,7 @@
     <v-divider></v-divider>
 
     <br />
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -28,10 +32,10 @@ export default {
     MemoryVerse,
   },
 
-  props: ['verses'],
+  props: ['category', 'verses'],
 
   methods: {
-    trimmedSubCategory(subcategory) {
+    trimmedSubCategory: function(subcategory) {
       return subcategory.replace(/_/g, ' ').replace(/\w\./i, '')
     },
   },

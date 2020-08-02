@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <div :class="`text-overline text-sm-button`">
       {{ category }}
     </div>
@@ -7,9 +7,9 @@
     <br />
 
     <template v-for="(sv, key) in sortedVerses">
-      <SubCategoryList :key="key" :verses="sv" />
+      <SubCategoryList :key="key" :category="category" :verses="sv" />
     </template>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -30,14 +30,20 @@ export default {
   }),
 
   created() {
-    this.verses = { ...this.cv }
-    delete this.verses.category
+    this.setup()
+  },
 
-    this.sortedVerses = Object.keys(this.verses)
-      .sort()
-      .map((key) => {
-        return { subCategory: key, subCategoryVerses: this.verses[key] }
-      })
+  methods: {
+    setup: function() {
+      this.verses = { ...this.cv }
+      delete this.verses.category
+
+      this.sortedVerses = Object.keys(this.verses)
+        .sort()
+        .map((key) => {
+          return { subCategory: key, subCategoryVerses: this.verses[key] }
+        })
+    },
   },
 }
 </script>
