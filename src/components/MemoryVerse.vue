@@ -1,11 +1,11 @@
 <template>
-  <div>Verse</div>
+  <div>Verse under {{ subCategory }}</div>
 </template>
 
 <script>
 export default {
   name: 'MemoryVerse',
 
-  props: ['verse'],
+  props: ['verse', 'subCategory'],
 }
 </script>

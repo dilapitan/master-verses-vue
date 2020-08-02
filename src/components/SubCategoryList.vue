@@ -5,9 +5,9 @@
     </div>
 
     <v-row>
-      <template v-for="v in verses">
-        <v-col :key="v.number" cols="8" xs="8" sm="6" md="4" lg="3">
-          <MemoryVerse :verse="v" />
+      <template v-for="(v, key) in verses.subCategoryVerses">
+        <v-col :key="key" cols="8" xs="8" sm="6" md="4" lg="3">
+          <MemoryVerse :subCategory="verses.subCategory" :verse="v" />
         </v-col>
       </template>
     </v-row>
