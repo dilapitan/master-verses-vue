@@ -29,7 +29,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item>
+        <v-list-item :href="href" target="_blank">
           <v-list-item-action>
             <v-icon>mdi-github</v-icon>
           </v-list-item-action>
@@ -69,6 +69,7 @@ import { getVerses } from '@/services/FirestoreService'
 export default {
   data: () => ({
     drawer: null,
+    href: 'https://github.com/dilapitan/master-verses-vue',
     verses: [],
   }),
 
