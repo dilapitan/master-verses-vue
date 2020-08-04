@@ -19,6 +19,13 @@
         </v-col>
       </v-row>
     </template>
+
+    <template v-else>
+      <div>
+        <br />
+        <v-btn color="primary">Randomize</v-btn>
+      </div>
+    </template>
   </div>
 </template>
 

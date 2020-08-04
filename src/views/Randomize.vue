@@ -1,14 +1,25 @@
 <template>
   <v-container fluid>
     <div :class="`text-xs-caption text-sm-h4`">
-      Randomize! And recite!
+      Randomize! And Recite!
     </div>
+
+    <br />
+
+    <DataContainer :verses="verses" page="randomize" />
   </v-container>
 </template>
 
 <script>
+import DataContainer from '@/components/DataContainer'
+
 export default {
   name: 'Randomize',
-  props: ['verses'],
+
+  components: {
+    DataContainer
+  },
+
+  props: ['verses']
 }
 </script>
