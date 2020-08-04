@@ -57,7 +57,15 @@
 
     <v-main>
       <v-container fluid>
-        <router-view :verses="verses"></router-view>
+        <router-view v-if="isDataLoaded" :verses="verses"></router-view>
+        <v-row v-else align="center" justify="center">
+          <v-progress-circular
+            class="mt-16"
+            color="primary"
+            indeterminate
+            size="50"
+          ></v-progress-circular>
+        </v-row>
       </v-container>
     </v-main>
   </v-app>
@@ -70,7 +78,8 @@ export default {
   data: () => ({
     drawer: null,
     href: 'https://github.com/dilapitan/master-verses-vue',
-    verses: [],
+    isDataLoaded: false,
+    verses: []
   }),
 
   created() {
@@ -84,9 +93,10 @@ export default {
           querySnapshot.docs.forEach((doc) => {
             this.verses.push(doc.data())
           })
+          this.isDataLoaded = true
         })
         .catch((error) => console.log(error))
-    },
-  },
+    }
+  }
 }
 </script>
