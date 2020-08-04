@@ -6,7 +6,7 @@
 
     <br />
 
-    <DataContainer :verses="verses" />
+    <DataContainer :verses="verses" page="home" />
   </v-container>
 </template>
 

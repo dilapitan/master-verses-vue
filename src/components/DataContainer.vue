@@ -10,7 +10,7 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row v-if="page === 'home'">
       <v-col>
         <template v-for="cv in categorizedVerses">
           <CategoryList :key="cv.category" :category="cv.category" :cv="cv" />
@@ -30,7 +30,7 @@ export default {
     CategoryList
   },
 
-  props: ['verses'],
+  props: ['page', 'verses'],
 
   data: () => ({
     category: 'All',
