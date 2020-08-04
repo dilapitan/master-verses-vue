@@ -6,7 +6,7 @@
 
     <v-row>
       <template v-for="(v, key) in verses.subCategoryVerses">
-        <v-col :key="key" cols="8" xs="8" sm="6" md="4" lg="3">
+        <v-col :key="key" cols="10" xs="10" sm="6" md="4" lg="3">
           <MemoryVerse
             :category="category"
             :subCategory="verses.subCategory"
@@ -29,7 +29,7 @@ export default {
   name: 'SubCategoryList',
 
   components: {
-    MemoryVerse,
+    MemoryVerse
   },
 
   props: ['category', 'verses'],
@@ -37,7 +37,7 @@ export default {
   methods: {
     trimmedSubCategory: function(subcategory) {
       return subcategory.replace(/_/g, ' ').replace(/\w\./i, '')
-    },
-  },
+    }
+  }
 }
 </script>
