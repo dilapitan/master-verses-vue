@@ -41,10 +41,10 @@
 export default {
   name: 'MemoryVerse',
 
-  props: ['category', 'verse', 'subCategory'],
+  props: ['category', 'page', 'subCategory', 'verse'],
 
   data: () => ({
-    dialog: false,
+    dialog: false
   }),
 
   methods: {
@@ -54,7 +54,7 @@ export default {
 
     trimmedSubCategory: function(subcategory) {
       return subcategory.replace(/_/g, ' ').replace(/\w\./i, '')
-    },
-  },
+    }
+  }
 }
 </script>
