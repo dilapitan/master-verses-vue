@@ -23,7 +23,9 @@
     <template v-else>
       <div>
         <br />
-        <v-btn color="primary">Randomize</v-btn>
+        <v-btn color="primary" :loading="isLoading" @click="randomize()"
+          >Randomize</v-btn
+        >
       </div>
     </template>
   </div>
@@ -52,7 +54,10 @@ export default {
       'E. Ministry Basics',
       'F. Kingdom Commitments',
       'G. Circles of Influence'
-    ]
+    ],
+    isLoading: false,
+    subCategory: '',
+    verse: ''
   }),
 
   computed: {
@@ -64,6 +69,29 @@ export default {
       })
 
       return sorted
+    }
+  },
+
+  methods: {
+    randomize: function() {
+      this.isLoading = true
+      const randomCategory = this.categorizedVerses[
+        Math.floor(Math.random() * this.categorizedVerses.length)
+      ]
+
+      const randomCategoryKeys = Object.keys(randomCategory)
+      const randomSubCategoryLabel =
+        randomCategoryKeys[(randomCategoryKeys.length * Math.random()) << 0]
+
+      const randomSubCategory = randomCategory[randomSubCategoryLabel]
+      this.subCategory = randomSubCategoryLabel
+
+      const randomVerse =
+        randomSubCategory[Math.floor(Math.random() * randomSubCategory.length)]
+
+      this.verse = randomVerse
+
+      this.isLoading = false
     }
   }
 }
