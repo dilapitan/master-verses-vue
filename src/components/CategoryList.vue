@@ -19,14 +19,14 @@ export default {
   name: 'CategoryList',
 
   components: {
-    SubCategoryList,
+    SubCategoryList
   },
 
   props: ['cv', 'category'],
 
   data: () => ({
     verses: null,
-    sortedVerses: [],
+    sortedVerses: []
   }),
 
   created() {
@@ -43,7 +43,7 @@ export default {
         .map((key) => {
           return { subCategory: key, subCategoryVerses: this.verses[key] }
         })
-    },
-  },
+    }
+  }
 }
 </script>

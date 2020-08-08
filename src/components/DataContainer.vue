@@ -27,6 +27,16 @@
           >Randomize</v-btn
         >
       </div>
+
+      <v-row v-if="verse">
+        <v-col>
+          <MemoryVerse
+            :category="randomizedCategoryLabel"
+            :verse="verse"
+            :subCategory="subCategory"
+          />
+        </v-col>
+      </v-row>
     </template>
   </div>
 </template>
@@ -56,32 +66,73 @@ export default {
       'G. Circles of Influence'
     ],
     isLoading: false,
-    subCategory: '',
-    verse: ''
+    randomizedCategoryLabel: null,
+    subCategory: null,
+    verse: null
   }),
+
+  components: {
+    MemoryVerse: () =>
+      import(/* webpackChunkName: "MemoryVerse" */ '@/components/MemoryVerse')
+  },
 
   computed: {
     categorizedVerses: function() {
       if (this.category === 'All') return this.verses
 
       const sorted = this.verses.filter((categorizedVerses) => {
+        console.log('categorizedVerses:', categorizedVerses)
         return categorizedVerses.category === this.category
       })
 
+      console.log('sorted:', sorted)
       return sorted
+    }
+  },
+
+  watch: {
+    category: function() {
+      this.verse = null
     }
   },
 
   methods: {
     randomize: function() {
       this.isLoading = true
-      const randomCategory = this.categorizedVerses[
-        Math.floor(Math.random() * this.categorizedVerses.length)
-      ]
+
+      /**
+       * This is to remove 'All', for Category labeling
+       */
+      const localCategoriesLabels = [...this.categories]
+      const localCategories = [...this.categorizedVerses]
+      localCategoriesLabels.shift()
+
+      /**
+       * Getting a random index to be used for randomizing a category
+       * and getting the category label but deleting first the
+       * 'category' prop before randomizing for sub
+       * categories since 'category' is not a
+       * subcategory
+       */
+      const randomCategoryIndex = Math.floor(
+        Math.random() * localCategories.length
+      )
+
+      this.randomizedCategoryLabel = localCategoriesLabels[randomCategoryIndex]
+
+      const randomCategory = localCategories[randomCategoryIndex]
 
       const randomCategoryKeys = Object.keys(randomCategory)
+
+      // Removing 'category' prop
+      const adjustedRandomCategoryKeys = randomCategoryKeys.filter(
+        (randomCategoryKeys) => randomCategoryKeys !== 'category'
+      )
+
       const randomSubCategoryLabel =
-        randomCategoryKeys[(randomCategoryKeys.length * Math.random()) << 0]
+        adjustedRandomCategoryKeys[
+          (adjustedRandomCategoryKeys.length * Math.random()) << 0
+        ]
 
       const randomSubCategory = randomCategory[randomSubCategoryLabel]
       this.subCategory = randomSubCategoryLabel

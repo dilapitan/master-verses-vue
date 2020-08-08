@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-row>
-      <p class="text-caption mt-2">{{ verse.number }}.</p>
+      <p v-if="page === 'home'" class="text-caption mt-2">
+        {{ verse.number }}.
+      </p>
       <v-btn
         @click="openDialog()"
         class="font-weight-bold"
