@@ -28,8 +28,12 @@
         >
       </div>
 
+      <br /><br />
       <v-row v-if="verse">
-        <v-col>
+        <v-col cols="2" xs="2" sm="1">
+          <v-icon color="warning" x-large>mdi-fire</v-icon>
+        </v-col>
+        <v-col cols="10" xs="10" sm="10" class="mt-1">
           <MemoryVerse
             :category="randomizedCategoryLabel"
             :verse="verse"
@@ -81,11 +85,9 @@ export default {
       if (this.category === 'All') return this.verses
 
       const sorted = this.verses.filter((categorizedVerses) => {
-        console.log('categorizedVerses:', categorizedVerses)
         return categorizedVerses.category === this.category
       })
 
-      console.log('sorted:', sorted)
       return sorted
     }
   },
@@ -147,3 +149,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#recite {
+  cursor: default;
+}
+</style>
