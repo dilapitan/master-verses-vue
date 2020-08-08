@@ -46,13 +46,16 @@
 </template>
 
 <script>
-import CategoryList from '@/components/CategoryList'
-
 export default {
   name: 'DataContainer',
 
   components: {
-    CategoryList
+    CategoryList: () =>
+      import(
+        /* webpackChunkName: "CategoryList" */ '@/components/CategoryList'
+      ),
+    MemoryVerse: () =>
+      import(/* webpackChunkName: "MemoryVerse" */ '@/components/MemoryVerse')
   },
 
   props: ['page', 'verses'],
@@ -74,11 +77,6 @@ export default {
     subCategory: null,
     verse: null
   }),
-
-  components: {
-    MemoryVerse: () =>
-      import(/* webpackChunkName: "MemoryVerse" */ '@/components/MemoryVerse')
-  },
 
   computed: {
     categorizedVerses: function() {
