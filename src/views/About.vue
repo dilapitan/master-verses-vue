@@ -69,6 +69,24 @@
       <br /><br />
 
       <span class="font-italic">Soli Deo Gloria!</span>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <span class="grey--text caption">
+        Icons made by
+        <a
+          href="https://www.flaticon.com/authors/pixel-perfect"
+          title="Pixel perfect"
+          >Pixel perfect</a
+        >
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com</a
+        >
+      </span>
     </p>
   </v-container>
 </template>
