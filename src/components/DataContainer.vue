@@ -118,7 +118,8 @@ export default {
         Math.random() * localCategories.length
       )
 
-      this.randomizedCategoryLabel = localCategoriesLabels[randomCategoryIndex]
+      this.randomizedCategoryLabel =
+        localCategoriesLabels[randomCategoryIndex + 1]
 
       const randomCategory = localCategories[randomCategoryIndex]
 
