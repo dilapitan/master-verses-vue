@@ -41,7 +41,7 @@
         <v-divider></v-divider>
         <br />
         <v-list-item>
-          <v-switch inset v-model="$vuetify.theme.dark"></v-switch>
+          <v-switch inset @click="toggleTheme()"></v-switch>
           <v-icon v-if="!$vuetify.theme.dark">mdi-lightbulb-on-outline</v-icon>
           <v-icon v-else>mdi-lightbulb-outline</v-icon>
         </v-list-item>
@@ -79,11 +79,23 @@ export default {
     drawer: null,
     href: 'https://github.com/dilapitan/master-verses-vue',
     isDataLoaded: false,
+
     verses: []
   }),
 
   created() {
     this.setVerses()
+  },
+
+  mounted() {
+    const theme = localStorage.getItem('dark_theme')
+    if (theme) {
+      if (theme == 'true') {
+        this.$vuetify.theme.dark = true
+      } else {
+        this.$vuetify.theme.dark = false
+      }
+    }
   },
 
   methods: {
@@ -96,6 +108,11 @@ export default {
           this.isDataLoaded = true
         })
         .catch((error) => console.log(error))
+    },
+
+    toggleTheme: function() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      localStorage.setItem('dark_theme', this.$vuetify.theme.dark.toString())
     }
   }
 }
