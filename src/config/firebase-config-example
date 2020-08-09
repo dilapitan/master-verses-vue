@@ -1,4 +1,5 @@
 import { firebase } from '@firebase/app'
+import 'firebase/analytics'
 import '@firebase/firestore'
 
 const firebaseConfig = firebase.initializeApp({
@@ -9,6 +10,9 @@ const firebaseConfig = firebase.initializeApp({
   storageBucket: 'ADD-YOUR-DETAILS-HERE'
   messagingSenderId: 'ADD-YOUR-DETAILS-HERE'
   appId: 'ADD-YOUR-DETAILS-HERE'
+  measurementId: 'ADD-YOUR-DETAILS-HERE'
 })
+
+firebase.analytics()
 
 export const db = firebaseConfig.firestore()
