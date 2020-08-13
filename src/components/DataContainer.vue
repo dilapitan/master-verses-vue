@@ -114,12 +114,15 @@ export default {
        * categories since 'category' is not a
        * subcategory
        */
+
       const randomCategoryIndex = Math.floor(
         Math.random() * localCategories.length
       )
 
       this.randomizedCategoryLabel =
-        localCategoriesLabels[randomCategoryIndex + 1]
+        this.category === 'All'
+          ? localCategoriesLabels[randomCategoryIndex]
+          : this.category
 
       const randomCategory = localCategories[randomCategoryIndex]
 
